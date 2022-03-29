@@ -1,0 +1,41 @@
+<strong>Description</strong>
+<h4><%= @photo.description%></h4>
+<% if @photo.avatars.attached?%>
+<p>
+  <strong>Avatars</strong>
+  <br>
+  <% @photo.avatars.each do |avatar|%>
+    <%=image_tag(avatar,style: 'height:200px;width:auto;')%>
+  <%end%>
+<%end%>
+
+
+
+<h2>Comments</h2>
+<div id="comment_pane">
+<% @photo.comments.each do |comment| %>
+ <%= render "comments/comment",local: {comment: @comment}%>
+<% end %>
+</div>
+<h2>Add a comment:</h2>
+  <%= form_with model: [ @photo, @photo.comments.build ],local: false do |form| %>
+    <p>
+      <%= form.label :commentor %><br>
+      <%= form.text_field :commentor %>
+    </p>
+    <p>
+      <%= form.label :body %><br>
+      <%= form.text_area :body %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
+</div>
+
+
+</div>
+
+
+
+<%= link_to 'edit', edit_photo_path(@photo) %> 

@@ -1,0 +1,29 @@
+<h1>New Photo</h1>
+
+<%= form_for @photo do |f| %>
+  <div>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+
+  </div>
+  <%= f.label :avatars%>
+  <%= f.file_field :avatars, multiple:true%><br/>
+  <%=f.fields_for :comments do |p|%>
+  <div>
+    <%= p.label :commentor%>
+    <%= p.text_field :commentor%>
+  </div>
+
+  <div>
+    <%=p.label :body%>
+    <%=p.text_field :body%>
+  </div>
+
+  <%end%>
+  
+
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

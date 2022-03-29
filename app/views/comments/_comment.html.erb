@@ -1,0 +1,13 @@
+<% @photo.comments.each do |comment| %>
+
+
+  <p>
+    <strong>Commentor:</strong>
+    <%= comment.commentor %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+<%end%>
+  </p>
